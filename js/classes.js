@@ -75,6 +75,10 @@ class game {
 	stop() { event.preventDefault(); if(event.sourceCapabilities.firesTouchEvents) this.mouse(event, true); }
 
 	mouse(e, t) {
+
+		if(this.ended)
+			return;
+
 		e = e || event;
 
 		let key = e.which;
