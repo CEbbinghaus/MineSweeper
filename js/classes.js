@@ -110,6 +110,7 @@ class game {
 						this.draw();
 
 						this.afterNextDraw = () => alert("You Lost");
+						return;
 					}
 				} else if(key == 3) {
 					if(!v.visible)
