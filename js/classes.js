@@ -117,8 +117,10 @@ class game {
 						v.flag = !v.flag;
 				}
 
-				if(this.hasWon())
+				if(this.hasWon()) {
+					this.ended = true;
 					this.afterNextDraw = () => alert("Yay you won");
+				}
 			}
 		}))
 		this.draw();
@@ -164,11 +166,12 @@ class game {
 	draw() {
 		this.ctx.clearRect(0, 0, this.size, this.size);
 		let s = (this.size - (this.S - 1) * o) / this.S;
-		this.fields.forEach((x, xi) => {
-			x.forEach((y, yi) => {
-				y.draw(s);
-			});
-		});
+
+		for(let x = 0; x < this.fields.length; ++x) {
+			for(let y = 0; y < this.fields[x].length; ++y) {
+				this.fields[x][y].draw(s);
+			}
+		}
 
 		window.requestAnimationFrame(() => {
 			window.requestAnimationFrame(() => {
